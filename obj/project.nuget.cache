@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VFSKH2BpDop8M/6Mx0fqNWI1omTGCGb/K7s4FC0hzMPn1IbvhRQbOxhvaMm+rjGXeV+J8ukiJTA5/Iw2daWWqQ==",
+  "dgSpecHash": "67dwTQmlQS3mPoHPd/yCc7yUgaZO6Q1CbxlE00t08BC5hr2bkJm6yW4Y0w2ceZcsa5yolyOfYkV6ievE3Lpdkw==",
   "success": true,
-  "projectFilePath": "D:\\MISCELLANEOUS\\U3f\\UI2\\UI2.csproj",
+  "projectFilePath": "D:\\WPF\\DiskManager\\UI2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\shour\\.nuget\\packages\\livecharts\\0.9.7\\livecharts.0.9.7.nupkg.sha512",
     "C:\\Users\\shour\\.nuget\\packages\\livecharts.wpf\\0.9.7\\livecharts.wpf.0.9.7.nupkg.sha512"

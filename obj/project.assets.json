@@ -86,11 +86,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MISCELLANEOUS\\U3f\\UI2\\UI2.csproj",
+      "projectUniqueName": "D:\\WPF\\DiskManager\\UI2.csproj",
       "projectName": "UI2",
-      "projectPath": "D:\\MISCELLANEOUS\\U3f\\UI2\\UI2.csproj",
+      "projectPath": "D:\\WPF\\DiskManager\\UI2.csproj",
       "packagesPath": "C:\\Users\\shour\\.nuget\\packages\\",
-      "outputPath": "D:\\MISCELLANEOUS\\U3f\\UI2\\obj\\",
+      "outputPath": "D:\\WPF\\DiskManager\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\shour\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -178,7 +178,7 @@ namespace DiskManager
                 FontSize = 22,
                 FontWeight = FontWeights.ExtraBold,
                 FontStyle = FontStyles.Italic,
-                Margin = new Thickness(5,5,5,20),
+                Margin = new Thickness(5, 5, 5, 20),
                 HorizontalAlignment = HorizontalAlignment.Center
 
             };
@@ -718,25 +718,25 @@ namespace DiskManager
             {
                 string searchDirectory = folderBrowserDialog.SelectedPath;
 
-                if (selectedFileType == "All Files")
+
+
+
+                string searchPattern = GetSearchPattern(selectedFileType);
+                if (searchPattern == null)
                 {
-                    // Search for all files in the current directory and its subdirectories
-                    allFiles = Directory.GetFiles(searchDirectory, "*", SearchOption.AllDirectories);
+                    System.Windows.MessageBox.Show("Invalid file type selected.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
                 }
-                else
+
+                string[] patterns = searchPattern.Split("|");
+                allFiles = null;
+
+                string tmp = searchDirectory;
+                foreach (var pattern in patterns)
                 {
-                    string searchPattern = GetSearchPattern(selectedFileType);
-                    if (searchPattern == null)
-                    {
-                        System.Windows.MessageBox.Show("Invalid file type selected.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                        return;
-                    }
-
-                    string[] patterns = searchPattern.Split('|');
-
-                    // Search for files of the selected type in the current directory and its subdirectories
-
-                    allFiles = patterns.AsParallel().SelectMany(p => Directory.GetFiles(searchDirectory, p, SearchOption.AllDirectories)).ToArray();
+                    // MessageBox.Show(pattern.TrimEnd().TrimStart()); 
+                    if (allFiles == null) allFiles = Directory.GetFiles(searchDirectory, "*" + pattern, SearchOption.AllDirectories);
+                    else allFiles = allFiles.Concat(Directory.GetFiles(searchDirectory, "*" + pattern, SearchOption.AllDirectories)).ToArray();
                 }
             }
 
@@ -746,6 +746,7 @@ namespace DiskManager
             //  progressDialog.Show();
 
             // Perform the search process asynchronously using Tasks
+
             Task.Run(() =>
             {
 
@@ -795,16 +796,17 @@ namespace DiskManager
                 });
             });
 
+
             // progressDialog.Close();
         }
 
         private static string GetSearchPattern(string fileType)
         {
             string tmp = "";
-            if (fileType == "Image") tmp = "*.jpg | *.jpeg | *.png | *.gif | *.bmp | *.tiff | *.tif | *.webp | *.svg";
-            else if (fileType == "Video") tmp = "*.mp4|*.avi|*.mkv|*.mov|*.wmv|*.flv|*.webm|*.m4v|*.mpeg|*.mpg|*.3gp|*.3g2";
-            else if (fileType == "Document") tmp = "*.doc | *.docx | *.pdf | *.txt | *.rtf | *.ppt | *.pptx | *.xls | *.xlsx | *.odt | *.ods | *.odp | *.csv";
-            else tmp = "*.mp3|*.wav|*.m4a|*.flac|*.ogg|*.aac|*.wma|*.aiff|*.alac|*.amr|*.opus";
+            if (fileType == "Image") tmp = ".jpg|.jpeg|.png|.gif|.bmp|.tiff|.tif|.webp|.svg";
+            else if (fileType == "Video") tmp = ".mp4|.avi|.mkv|.mov|.wmv|.flv|.webm|.m4v|.mpeg|.mpg|.3gp|.3g2";
+            else if (fileType == "Document") tmp = ".doc|.docx|.pdf|.rtf|.ppt|.pptx|.txt|.xls|.xlsx|.odt|.ods|.odp|.csv";
+            else if (fileType == "Audio") tmp = ".mp3|.wav|.m4a|.flac|.ogg|.aac|.wma|.aiff|.alac|.amr|.opus";
             return tmp;
         }
         private string CalculateFileHash(string filePath)
@@ -832,6 +834,8 @@ namespace DiskManager
             if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string searchDirectory = folderBrowserDialog.SelectedPath;
+
+
 
                 // Search for files with the specified format in the chosen directory
                 foundFiles = Directory.GetFiles(searchDirectory, "*" + fileFormat, SearchOption.AllDirectories).ToList();
