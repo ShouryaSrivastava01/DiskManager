@@ -3,7 +3,8 @@
 ## Overview
 This project is a WPF (Windows Presentation Foundation) application developed using C# that [briefly explain the purpose of the project]. It provides [mention the main features and functionalities of the application].
 
-[![Alt text for your video]](https://youtu.be/E5qYOdoHlDg)
+[![Alt text for your video](https://img.youtube.com/vi/E5qYOdoHlDg/0.jpg)](https://www.youtube.com/watch?v=E5qYOdoHlDg)
+
 
 
 ## Prerequisites
