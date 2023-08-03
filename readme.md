@@ -3,10 +3,7 @@
 ## Overview
 This project is a WPF (Windows Presentation Foundation) application developed using C# that [briefly explain the purpose of the project]. It provides [mention the main features and functionalities of the application].
 
-[![Alt text for your video](https://img.youtube.com/vi/E5qYOdoHlDg/0.jpg)](https://www.youtube.com/watch?v=E5qYOdoHlDg)
-
-
-
+https://github.com/ShouryaSrivastava01/DiskManager/assets/72685413/80393a13-b080-4352-b0f2-77c6321e3205
 ## Prerequisites
 To run this application on your local machine, make sure you have the following prerequisites installed:
 
